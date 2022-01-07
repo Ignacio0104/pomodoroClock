@@ -1,48 +1,48 @@
 const el = document.querySelector(".clock");
 const bell = document.querySelector("audio");
 
-const mindiv = document.querySelector(".mins");
-const secdiv = document.querySelector(".secs");
+const minutesInput = document.querySelector(".minutes");
+const secondsInput = document.querySelector(".seconds");
 
 const startBtn = document.querySelector(".start");
 localStorage.setItem("btn", "focus");
 
-let initial, totalsecs, perc, paused, mins, seconds;
+let timer, totalSeconds, percentage, paused, mins, secs;
 
-startBtn.addEventListener("click", () => {
+startBtn.addEventListener("click", () => { //Here we check what kind of button was saved at localStorage
   let btn = localStorage.getItem("btn");
 
-  if (btn === "focus") {
+  if (btn === "focus") { //Here we assign the value depending on the type
     mins = +localStorage.getItem("focusTime") || 1;
   } else {
     mins = +localStorage.getItem("breakTime") || 1;
   }
 
-  seconds = mins * 60;
-  totalsecs = mins * 60;
+  secs = mins * 60;
+  totalSeconds = mins * 60;
   setTimeout(decremenT(), 60);
   startBtn.style.transform = "scale(0)";
   paused = false;
 });
 
 function decremenT() {
-  mindiv.textContent = Math.floor(seconds / 60)> 9 ? Math.floor(seconds / 60) : `0${Math.floor(seconds / 60)}`;
-  secdiv.textContent = seconds % 60 > 9 ? seconds % 60 : `0${seconds % 60}`;
-  if (circle.classList.contains("danger")) {
+  minutesInput.textContent = Math.floor(secs / 60)> 9 ? Math.floor(secs / 60) : `0${Math.floor(secs / 60)}`;
+  secondsInput.textContent = secs % 60 > 9 ? secs % 60 : `0${secs % 60}`;
+  if (circle.classList.contains("danger")) { //We add or remove the danger class
     circle.classList.remove("danger");
   }
 
-  if (seconds > 0) {
-    perc = Math.ceil(((totalsecs - seconds) / totalsecs) * 100);
-    setProgress(perc);
-    seconds--;
-    initial = window.setTimeout("decremenT()", 1000);
-    if (seconds < 10) {
+  if (secs > 0) {
+    percentage = Math.ceil(((totalSeconds - secs) / totalSeconds) * 100);
+    setProgress(percentage);
+    secs--;
+    timer = window.setTimeout("decremenT()", 1000);
+    if (secs < 10) {
       circle.classList.add("danger");
     }
   } else {
     mins = 0;
-    seconds = 0;
+    secs = 0;
     bell.play();
     let btn = localStorage.getItem("btn");
 

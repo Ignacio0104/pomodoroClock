@@ -204,3 +204,25 @@ footer {
     position: static;
   }
 }
+
+.save_message{
+  animation: opacityOnAndOff 3s normal forwards;
+  display:inline-block;
+  padding:0.3em 1.2em;
+  margin:0 0.3em 0.3em 0;
+  text-align:center;
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+@keyframes opacityOnAndOff {
+  0% {
+      opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
