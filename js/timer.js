@@ -1,5 +1,6 @@
 const el = document.querySelector(".clock");
 const bell = document.querySelector("audio");
+const click = new Audio("/assets/click.mp3");
 
 const minutesInput = document.querySelector(".minutes");
 const secondsInput = document.querySelector(".seconds");
@@ -11,13 +12,12 @@ let timer, totalSeconds, percentage, paused, mins, secs;
 
 startBtn.addEventListener("click", () => { //Here we check what kind of button was saved at localStorage
   let btn = localStorage.getItem("btn");
-
+  click.play();
   if (btn === "focus") { //Here we assign the value depending on the type
     mins = +localStorage.getItem("focusTime") || 1;
   } else {
     mins = +localStorage.getItem("breakTime") || 1;
   }
-
   secs = mins * 60;
   totalSeconds = mins * 60;
   setTimeout(decremenT(), 60);

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="icon" href="/assets/reloj.png">
   </head>
-  <body onload="clearClasses()">
+  <body>
     <h1>Pomodoro Clock</h1>
     <figure class="clock">
       <div class="minutes">00</div>
@@ -34,7 +34,7 @@
       <button class="pause">Pause</button>
     </div>
 
-    <form action=".">
+    <form action="." onchange="cleanClass()">
       <label for="focusTime">Focus Time</label>
       <input type="number" value="1" id="focusTime" min="0" />
       <label for="breakTime">Break Time</label>
