@@ -2,6 +2,7 @@ const focusTimeInput = document.querySelector("#focusTime");
 const breakTimeInput = document.querySelector("#breakTime");
 const pauseBtn = document.querySelector(".pause");
 
+
 focusTimeInput.value = localStorage.getItem("focusTime");
 breakTimeInput.value = localStorage.getItem("breakTime");
 
@@ -27,6 +28,10 @@ document.querySelector(".reset").addEventListener("click", () => {
   setProgress(0);
   minutesInput.textContent = 0;
   secondsInput.textContent = 0;
+  pauseBtn.style.transform = "scale(0)";
+  pause=false;
+  pauseBtn.textContent = "Pause";
+  pauseBtn.classList.remove("resume");
 });
 
 pauseBtn.addEventListener("click", () => {
@@ -43,6 +48,7 @@ pauseBtn.addEventListener("click", () => {
     clearTimeout(timer);
     pauseBtn.textContent = "Resume";
     pauseBtn.classList.add("resume");
+    resetBtn.style.transform = "scale(1)";
     paused = true;
   }
 });

@@ -6,6 +6,7 @@ const minutesInput = document.querySelector(".minutes");
 const secondsInput = document.querySelector(".seconds");
 
 const startBtn = document.querySelector(".start");
+const resetBtn = document.querySelector(".reset");
 localStorage.setItem("btn", "focus");
 
 let timer, totalSeconds, percentage, paused, mins, secs;
@@ -22,6 +23,8 @@ startBtn.addEventListener("click", () => { //Here we check what kind of button w
   totalSeconds = mins * 60;
   setTimeout(decremenT(), 60);
   startBtn.style.transform = "scale(0)";
+  resetBtn.style.transform = "scale(0)";
+  pauseBtn.style.transform = "scale(1)";
   paused = false;
 });
 
@@ -31,7 +34,6 @@ function decremenT() {
   if (circle.classList.contains("danger")) { //We add or remove the danger class
     circle.classList.remove("danger");
   }
-
   if (secs > 0) {
     percentage = Math.ceil(((totalSeconds - secs) / totalSeconds) * 100);
     setProgress(percentage);
@@ -52,7 +54,7 @@ function decremenT() {
       localStorage.setItem("btn", "break");
     } else {
       startBtn.classList.remove("break");
-      startBtn.textContent = "start focus";
+      startBtn.textContent = "Start focus";
       localStorage.setItem("btn", "focus");
     }
     startBtn.style.transform = "scale(1)";
