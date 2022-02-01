@@ -2,12 +2,10 @@ const focusTimeInput = document.querySelector("#focusTime");
 const breakTimeInput = document.querySelector("#breakTime");
 const pauseBtn = document.querySelector(".pause");
 
-
 focusTimeInput.value = localStorage.getItem("focusTime");
 breakTimeInput.value = localStorage.getItem("breakTime");
 
-function cleanClass()
-{
+function cleanClass(){ //Show the save settings message and then hide it
   document.getElementById("saveMessage").classList.remove("save_message");
   document.getElementById("saveMessage").innerHTML="";
 }

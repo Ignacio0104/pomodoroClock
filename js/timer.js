@@ -37,8 +37,8 @@ function decremenT() {
   if (secs > 0) {
     percentage = Math.ceil(((totalSeconds - secs) / totalSeconds) * 100);
     setProgress(percentage);
-    secs--;
-    timer = window.setTimeout("decremenT()", 1000);
+    secs=secs-1;
+    timer = setTimeout("decremenT()", 1000);
     if (secs < 10) {
       circle.classList.add("danger");
     }
